@@ -1,0 +1,33 @@
+body {
+    direction: rtl;
+    background-color: rgb(208, 255, 255);
+}
+
+#frame {
+    width: 80%;
+    min-height: 500px;
+    background-color: azure;
+    margin: auto;
+}
+
+header {
+    background-color: aqua;
+}
+
+h1 {
+    margin: 0;
+    text-align: center;
+    color: white;
+    padding: 16px 8px;
+    font-size: 50px;
+}
+
+.card {
+    border-bottom: 1px solid;
+    margin: 6px 0;
+    padding: 8px;
+}
+
+p {
+    font-weight: bold;
+}

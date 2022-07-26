@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>שיעורי בית 8</title>
+    <link rel="stylesheet" href="homework.css">
+    <script src="homework.js"></script>
+</head>
+
+<body>
+    <h1>שיעורי בית</h1>
+    <div class="card">
+
+        <label>המרת שקלים לדולרים:</label> <br>
+        <input type="number" id="shekelDollar"> <br>
+        <button onclick="dollar()">לחץ כאן להמרה</button> <br><br>
+        <span id="output"></span>
+        <br><br>
+
+    </div>
+
+    <div class="card">
+        <label>בחר צבע רקע לאתר:</label> <br><br>
+
+        <select id="color" onchange="setColor()">
+            <option></option>
+            <option>white</option>
+            <option>blue</option>
+            <option>yellow</option>
+            <option>green</option>
+        </select> <br><br>
+    </div>
+
+    <div class="card">
+
+        <label>מהו היקף המלבן ? </label> <br>
+        <input type="number" id="height" placeholder="גובה">
+        <input type="number" id="width" placeholder="רוחב">
+        <button onclick="rectangle()">לחץ לחישוב ההיקף</button> <br> <br>
+        <span id="output2"></span>
+        <br><br>
+
+    </div>
+
+    <div class="card">
+
+        <label>קובייה</label> <br>
+        <img src="Dices/Dice1.png" id="dice"> <br>
+        <button onclick="diceRoll()">הטל קובייה חדשה</button>
+        <br><br>
+
+    </div>
+
+    <div class="card">
+
+        <label>שתי קוביות יחד</label> <br>
+        <img src="Dices/Dice1.png" id="dice2">
+        <img src="Dices/Dice1.png" id="dice3"><br>
+        <button onclick="diceRollTwo()">הטל קוביות</button>
+        <br><br><br><br><br><br><br>
+
+    </div>
+</body>
+
+</html>

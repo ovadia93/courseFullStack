@@ -1,0 +1,8 @@
+body {
+    direction: rtl;
+}
+
+button {
+    color: blueviolet;
+    font-size: 85px;
+}

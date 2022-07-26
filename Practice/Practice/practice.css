@@ -1,0 +1,27 @@
+.tableFrame {
+    width: 300px;
+    border-radius: 8px;
+    border: 12px solid purple;
+    margin: auto;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td {
+    border: 2px solid purple;
+    height: 100px;
+    width: 100px;
+    text-align: center;
+    font-size: 60px;
+}
+
+h1 {
+    text-align: center;
+}
+
+td:hover {
+    background-color: aqua;
+    cursor: pointer;
+}

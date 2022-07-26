@@ -1,0 +1,25 @@
+body {
+    direction: rtl;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    padding: 16px;
+    text-align: center;
+}
+
+.card {
+    width: 18rem;
+    margin: 6px;
+}
+
+#products {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 20px;
+}
+
+.card {
+    width: 18rem;
+    margin: auto;
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="if-else.css">
+    <script src="if-else.js"></script>
+</head>
+
+<body>
+    <div id="frame">
+        <header>
+            <h1>שיעורי בית - תרגיל 7</h1>
+        </header>
+
+        <div class="card">
+            <p>יש לקלוט 2 מספרים ולהציג ב span את המספר הגדול</p>
+
+            <input type="number" id="num1" onchange="bigColor()">
+            <input type="number" id="num2" onchange="bigColor()">
+
+        </div>
+        <div class="card">
+            <p>לשאול שאלה ואם המשתמש כותב את התשובה הנכונה לכתוב לו "נכון" ואם התשובה לא נכונה לכתוב לו "לא נכונה"</p>
+            <label>כמה משולשים יש בפיצה?</label>
+            <input type="text" id="answer">
+            <button onclick="check()">אישור</button>
+        </div>
+        <div class="card">
+            <p>לקלוט 2 מספרים ולהחסיר בינינהם ולהציג אותם עם התוצאה בspan</p>
+
+            <input type="number" id="num3">
+            <input type="number" id="num4">
+            <button onclick="less()">אישור</button>
+            <p id="output"></p>
+        </div>
+        <div class="card">
+            <p>ליצור כפתור שבלחיצה עליו זה מציג true ובלחיצה הבאה זה מציג false וחוזר חלילה. </p>
+
+            <button id="btn" onclick="btn()">true</button>
+        </div>
+        <div class="card">
+            <p>לקלוט 2 מספרים ולהחליף ביניהם.</p>
+
+            <input type="number" id="num5">
+            <input type="number" id="num6">
+            <button onclick="replace()">אישור</button>
+        </div>
+        <div class="card">
+            <p>לקלוט מספר ולכתוב האם הוא זוגי או אי זוגי.</p>
+
+            <input type="number" id="num7">
+            <button onclick="evenOrodd()">אישור</button>
+        </div>
+        <div class="card">
+            <p>לשאול שאלה ולאפשר לבחור את התשובה מ-select.</p>
+
+            <label>כמה ימים יש בחודש?</label>
+            <select id="sell" onchange="answer()">
+                <option>2</option>
+                <option>5</option>
+                <option>8</option>
+                <option>10</option>
+                <option>50</option>
+            </select>
+
+            <button onclick="answer()">אישור</button>
+        </div>
+        <div class="card">
+            <p>ליצור כפתור שבלחיצה עליו זה מוסיף מספר עם פסיק למספר הקודם.</p>
+
+            <button onclick="append()">wow</button>
+            <p id="output2"></p>
+        </div>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+</body>
+
+</html>
