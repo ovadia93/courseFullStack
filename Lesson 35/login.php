@@ -1,4 +1,4 @@
-<?
+<?php
     // trim() = ניקוי רווחים מצידי הטקסט
     // strtolower() = הופך את הטקסט לאותיות קטנות
     // $_POST = מערך עם כל המידע שהגיע בפוסט
@@ -6,7 +6,7 @@
     $userName = strtolower(trim($_POST['userName']));
     $password = trim($_POST['password']);
 
-    if ($userName == 'elyashiv' && $password == '1234') {
+    if ($userName == 'ben' && $password == '1234') {
         $isLogin = true;
         $message = "התחברת בהצלחה!";
     } else {
@@ -30,7 +30,7 @@
 
     <body>
         <form class="<? echo ($isLogin ? '' : 'error') ?>">
-            <h1><? echo $message ?></h1>
+            <h1><?php echo $message ?></h1>
         </form>
     </body>
 </html>

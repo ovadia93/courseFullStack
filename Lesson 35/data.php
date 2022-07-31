@@ -1,4 +1,4 @@
-<?
+<?php
     $arr = [
         [
             "email" => "rwindas0@nih.gov",
