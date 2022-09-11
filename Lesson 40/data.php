@@ -1,4 +1,4 @@
-<?
+<?php
     if (!isset($_GET['category'])) {
         echo json_encode([
             'status' => 'error',
