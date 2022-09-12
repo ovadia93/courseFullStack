@@ -1,9 +1,9 @@
-var numbers = [];
+let numbers = [];
 
 function add() {
     if (event.keyCode == 13) {
 
-        var num = document.getElementById("num").value;
+        let num = document.getElementById("num").value;
         numbers.push(Number(num));
         document.getElementById("num").value = "";
         show();

@@ -11,3 +11,4 @@ function calc() {
     x.value = "";
     y.value = "";
 }
+
