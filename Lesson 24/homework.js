@@ -28,16 +28,10 @@ function move(ev) {
     elem.style.left = (ev.x - 50) + 'px';
 }
 
-function color(ev) {
-    
-    const elem = document.querySelector("#box");
-
-    elem.color = css("background", "green")
-    // const elem = document.querySelector("#box");
-    //document.querySelector('#box').color = 'red';
-    
-    //$('#box').css('color', 'red');
-
-
-
+function replaceColor() {
+    setInterval(function() {
+        const rand = Math.floor(Math.random() * 360);
+        document.querySelector("#circle2").style.
+        backgroundColor = `hsl(${rand}, 75%, 47%)`;
+    }, 1000);
 }

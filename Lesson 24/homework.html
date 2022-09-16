@@ -8,7 +8,7 @@
     <script src="homework.js" defer></script>
 </head>
 
-<body>
+<body onload="replaceColor()">
     <div id="frame">
         <header>
             <h1>תרגול מסכם המשך - JavaScript</h1>
@@ -28,11 +28,14 @@
 
         <div class="card">
             <p>יש ליצור אלמנט שזז לכל מקום לפי העכבר.</p>
-            <div id="circle" onmousemove="move(event)"></div>
+            <div id="circle" onmousemove="move(event)"></div><br><br><br><br><br><br>
+
         </div>
 
         <div class="card">
             <p>יש ליצור אלמנט המחליף צבע כל שנייה.</p>
+            <div id="circle2"></div>
+
         </div>
 
     </div>
