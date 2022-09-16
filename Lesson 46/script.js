@@ -6,8 +6,6 @@ const fruits = [
     "לימון",
     "אננס",
     "בננה",
-    "ענבים",
-    "אבטיח",
 ];
 
 const btn = `<button onclick="removeItem(this)">x</button>`;
@@ -28,7 +26,7 @@ function removeItem(btn) {
 }
 
 $(function() {
-    // הפעלת אירוע על המשימה הרשונה
+    // הפעלת אירוע על המשימה הראשונה
     $("#task1 input").on('input', function() {
         const num = +$(this).val();
 

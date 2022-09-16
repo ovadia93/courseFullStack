@@ -27,3 +27,17 @@ function move(ev) {
     elem.style.top = (ev.y - 50) + 'px';
     elem.style.left = (ev.x - 50) + 'px';
 }
+
+function color(ev) {
+    
+    const elem = document.querySelector("#box");
+
+    elem.color = css("background", "green")
+    // const elem = document.querySelector("#box");
+    //document.querySelector('#box').color = 'red';
+    
+    //$('#box').css('color', 'red');
+
+
+
+}
