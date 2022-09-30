@@ -1,7 +1,7 @@
 <?php
     $host = "localhost";
-    $userName = "root";
-    $password = "";
+    $userName = "ben";
+    $password = "123456";
     $dbName = "full-stack";
 
     $link = mysqli_connect($host, $userName, $password, $dbName);

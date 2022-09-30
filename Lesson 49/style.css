@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
 body {
     direction: rtl;
-    background-color: blue;
+    background-color: lightgreen;
     font-family: 'Secular One', sans-serif;
 }
 
@@ -37,8 +37,14 @@ select {
     margin: 10px;
 }
 
-table {
-    width: 100%;
+.w3-table td,
+.w3-table th,
+.w3-table-all td,
+.w3-table-all th {
+    text-align: center;
 }
 
- 
+.w3-btn {
+    border-radius: 50%;
+    padding: 2px 8px;
+}
