@@ -1,7 +1,8 @@
 function hello() {
     var x = document.getElementById("name").value;
     alert(x + " שלום");
-
+    
+    // ניקוי שדות //
     document.getElementById("name").value = "";
 
 }
@@ -12,6 +13,7 @@ function multi() {
 
     alert(n1 * n2);
 
+    // ניקוי שדות //
     document.getElementById("num1").value = "";
     document.getElementById("num2").value = "";
 }
