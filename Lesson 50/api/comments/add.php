@@ -8,7 +8,7 @@
     $articleId = mysqli_real_escape_string($link, $_POST['articleId']);
 
     mysqli_query($link, "INSERT INTO `comments`(`articleId`, `userName`, `comment`) VALUES ('$articleId', '$userName', '$comment')");
-
+    echo  "INSERT INTO `comments`(`articleId`, `userName`, `comment`) VALUES ('$articleId', '$userName', '$comment')";
     // מקבל את המזהה של האלמנט האחרון שנוסף
     $id = mysqli_insert_id($link);
 
