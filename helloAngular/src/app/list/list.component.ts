@@ -1,15 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+    selector: 'app-list',
+    templateUrl: './list.component.html',
+    styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
+    product: string;
 
-  constructor() { }
+    list: string[] = [
+        "מלפפון",
+        "עגבניה",
+        "גמבה",
+        "חציל",
+        "כוסברה",
+    ];
 
-  ngOnInit(): void {
-  }
+    addProduct() {
+        this.list.push(this.product);
+        this.product = "";
+    }
+
+    removeItem(i: number) {
+        this.list.splice(i, 1);
+    }
+
+    constructor() { }
+
+    ngOnInit() {
+    }
 
 }
