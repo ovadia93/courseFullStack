@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
     providedIn: 'root'
 })
 export class UtilityService {
+    isShowAlert: boolean;
+    alertText: string;
 
     setStyling() {
         for (const key in localStorage) {
@@ -22,6 +24,11 @@ export class UtilityService {
                 document.body.style.filter = `invert(${val}%)`;
             }
         }
+    }
+
+    alert(text: string) {
+        this.alertText = text;
+        this.isShowAlert = true;
     }
 
     constructor() { }

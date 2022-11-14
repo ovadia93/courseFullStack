@@ -18,10 +18,12 @@ export class SettingsComponent implements OnInit {
 
     change(item: Setting) {
         localStorage[item.field] = item.value;
+        
         this.utility.setStyling();
     }
 
     constructor(private utility: UtilityService) {
+        
     }
 
     ngOnInit() {
