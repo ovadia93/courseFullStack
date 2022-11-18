@@ -4,4 +4,5 @@ export interface Setting {
     min: number;
     max: number;
     value: number;
+    default?: number;
 }

@@ -15,6 +15,7 @@ import { routes } from './routing';
 import { HomeComponent } from './home/home.component';
 import { UtilityService } from './utility.service';
 import { AlertComponent } from './alert/alert.component';
+import { GalleryComponent } from './gallery/gallery.component';
 
 @NgModule({
     declarations: [
@@ -27,6 +28,7 @@ import { AlertComponent } from './alert/alert.component';
         SettingsComponent,
         HomeComponent,
         AlertComponent,
+        GalleryComponent,
     ],
     imports: [
         BrowserModule,

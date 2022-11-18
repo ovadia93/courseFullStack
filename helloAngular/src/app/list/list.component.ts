@@ -32,7 +32,9 @@ export class ListComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
-        this.list = JSON.parse(localStorage['list']);
+        if (localStorage['list']) {
+            this.list = JSON.parse(localStorage['list']);
+        }
     }
 
 }
