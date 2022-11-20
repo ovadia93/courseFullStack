@@ -10,6 +10,7 @@ import { User } from './users.interface';
 })
 export class UsersComponent implements OnInit {
     users = users;
+    searchVal: string;
 
     remove(user: User) {
         const i = this.users.findIndex(x => x.id == user.id);

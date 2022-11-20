@@ -16,6 +16,8 @@ import { HomeComponent } from './home/home.component';
 import { UtilityService } from './utility.service';
 import { AlertComponent } from './alert/alert.component';
 import { GalleryComponent } from './gallery/gallery.component';
+import { FirstUpperPipe } from './first-upper.pipe';
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
     declarations: [
@@ -29,6 +31,8 @@ import { GalleryComponent } from './gallery/gallery.component';
         HomeComponent,
         AlertComponent,
         GalleryComponent,
+        FirstUpperPipe,
+        SearchPipe,
     ],
     imports: [
         BrowserModule,
