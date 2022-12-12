@@ -19,6 +19,7 @@ export class ClientsComponent implements OnInit {
         firstName: '',
         lastName: '',
         phone: '',
+        isFavorite: false,
     };
 
     remove(id: number) {
@@ -44,7 +45,23 @@ export class ClientsComponent implements OnInit {
                 firstName: '',
                 lastName: '',
                 phone: '',
+                isFavorite: false,
+
             };
+        });
+    }
+
+    favorite(item: Client) {
+        const sub = this.http.put<void>(`http://localhost:3000/clients/${item.id}/favorite`, {}).subscribe(() => {
+            item.isFavorite = true;
+            sub.unsubscribe();
+        });
+    }
+
+    unfavorite(item: Client) {
+        const sub = this.http.put<void>(`http://localhost:3000/clients/${item.id}/unfavorite`, {}).subscribe(() => {
+            item.isFavorite = false;
+            sub.unsubscribe();
         });
     }
 

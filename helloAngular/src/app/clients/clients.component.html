@@ -34,6 +34,10 @@
             <td>{{ item.email }}</td>
             <td>{{ item.phone }}</td>
             <td>{{ item.city }}</td>
+            <td>
+                <i *ngIf="!item.isFavorite" class="fa fa-star-o"></i>
+                <i *ngIf="item.isFavorite" class="fa fa-star"></i>
+            </td>
             <td><button (click)="remove(item.id)">x</button></td>
         </tr>
     </tbody>
