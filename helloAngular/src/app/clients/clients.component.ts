@@ -11,6 +11,7 @@ export class ClientsComponent implements OnInit {
 
     clients: Client[] = [];
 
+    // אובייקט לצורך הוספת לקוח חדש
     addedItem: Client = {
         id: 0,
         createTime: '',
@@ -46,7 +47,6 @@ export class ClientsComponent implements OnInit {
                 lastName: '',
                 phone: '',
                 isFavorite: false,
-
             };
         });
     }

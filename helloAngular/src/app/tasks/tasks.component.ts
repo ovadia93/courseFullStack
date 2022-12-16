@@ -11,6 +11,7 @@ export class TasksComponent implements OnInit {
     // הכנסנו את זה למשנה בתוך הקלאס ע"מ שנוכל להשתמש בו ב-HTML
     // לא חובה להשתמש באותו שם - אך ככה מקובל
     TaskStatuses = TaskStatuses;
+    newTask: string;
 
     sections: Structure[] = [
         {
@@ -43,9 +44,8 @@ export class TasksComponent implements OnInit {
             const struc = this.sections.find(x => x.status == newStatus);
             // שינינו לכרטיסייה את הסטטוב לסטטוס החדש
             item.status = newStatus;
-            if (struc) {
-            struc.cards.push(item)
-            }
+            struc?.cards.push(item);
+
             sub.unsubscribe();
         });
     }
@@ -64,6 +64,40 @@ export class TasksComponent implements OnInit {
 
     complete(s: Structure, item: Task) {
         this.statusChange(s, item, TaskStatuses.complete);
+    }
+
+    dragover(s: Structure) {
+        this.sections.forEach(x => x.isDrag = false);
+        s.isDrag = true;
+    }
+
+    dragend(s: Structure, item: Task) {
+        const target = this.sections.find(x => x.isDrag);
+
+        if (target) {
+            if (target.status !== s.status) {
+                this.statusChange(s, item, target.status);
+            }
+        }
+
+        this.sections.forEach(x => x.isDrag = false);
+    }
+
+    addTask() {
+        const sub = this.http.post<Task>("http://localhost:3000/tasks", { task: this.newTask }).subscribe(data => {
+            this.sections.find(x => x.status == TaskStatuses.open)?.cards.push(data);
+            this.newTask = '';
+            sub.unsubscribe();
+        });
+    }
+
+    remove(s: Structure, item: Task) {
+        const sub = this.http.delete<void>(`http://localhost:3000/tasks/${item.id}`).subscribe(() => {
+            const i = s.cards.findIndex(x => x.id == item.id);
+            s.cards.splice(i, 1);
+
+            sub.unsubscribe();
+        });
     }
 
     constructor(private http: HttpClient) { }

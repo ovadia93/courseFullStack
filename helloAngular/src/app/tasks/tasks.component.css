@@ -21,6 +21,15 @@
     padding: 12px;
     border-radius: 5px;
     box-shadow: 0 0 6px 0 #00000045;
+    position: relative;
+}
+
+.card i.fa-remove {
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    color: red;
+    cursor: pointer;
 }
 
 .card p {
@@ -37,4 +46,28 @@
     margin: 2px 5px;
     cursor: pointer;
     color: white;
+}
+
+.drag {
+    border: 5px dashed gray;
+}
+
+.card:active {
+    opacity: 0.4;
+    cursor: grab;
+}
+
+[draggable] {
+    user-select: none;
+}
+
+input {
+    padding: 8px 12px;
+    margin: 30px auto;
+    margin-bottom: -20px;
+    border-radius: 5px;
+    border: 1px solid;
+    width: 80%;
+    display: block;
+    position: relative;
 }
