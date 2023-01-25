@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
@@ -11,16 +11,23 @@ import { SignupComponent } from './signup/signup.component';
 import { routes } from './routing';
 import { HttpService } from './http.service';
 import { UtilityService } from './utility.service';
+import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
+import { TasksRecycleBinComponent } from './tasks-recycle-bin/tasks-recycle-bin.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         TasksComponent,
         LoginComponent,
-        SignupComponent
+        SignupComponent,
+        NavbarComponent,
+        HomeComponent,
+        TasksRecycleBinComponent
     ],
     imports: [
         BrowserModule,
+        FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
         RouterModule.forRoot(routes),

@@ -4,6 +4,7 @@ import { HttpService } from '../http.service';
 import { User } from './user.interface';
 import { finalize } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { UtilityService } from '../utility.service';
 
 @Component({
     selector: 'app-signup',
@@ -43,5 +44,12 @@ export class SignupComponent {
         });
     }
 
-    constructor(private http: HttpService, private router: Router) { }
+    constructor(private http: HttpService, private router: Router, private utility: UtilityService) { }
+
+    ngOnInit() {
+        if (this.utility.getUser()) {
+            this.router.navigate(['']);
+        }
+    }
+
 }

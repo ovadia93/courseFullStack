@@ -1,7 +1,15 @@
-.w3-red, .w3-hover-red:hover {
-
-    color: #fff!important;
-    background-color: red !important;
+p {
+    margin: 20px 0 0 0;
     text-align: center;
-    float: right;
+    color: #2a0fc8;
+
+    a {
+        text-decoration: none;
+        transition: 0.3s;
+        display: inline-block;
+        &:hover {
+            text-decoration: underline;
+            scale: 1.1;
+        }
     }
+}
