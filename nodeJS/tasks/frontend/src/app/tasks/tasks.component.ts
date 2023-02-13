@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpService } from '../http.service';
-import { LevelTypes, Structure, Task, TaskStatuses } from './tasks.interface';
+import { Structure, Task, TaskStatuses, urlevels } from './tasks.interface';
 
 @Component({
     selector: 'app-tasks',
@@ -12,43 +13,27 @@ export class TasksComponent implements OnInit {
     // לא חובה להשתמש באותו שם - אך ככה מקובל
     TaskStatuses = TaskStatuses;
     newTask?: string;
+    urlevels = urlevels;
+    displayMode: 'columns' | 'table' | 'list' | 'folders' = 'columns';
 
     sections: Structure[] = [
         {
             status: TaskStatuses.open,
             title: 'משימות פתוחות',
-            color: 'yellow',
+            color: '#e8e885',
             cards: [],
         },
         {
             status: TaskStatuses.inProgress,
             title: 'בטיפול',
-            color: 'orange',
+            color: '#e8c885',
             cards: [],
         },
         {
             status: TaskStatuses.complete,
             title: 'טופלו',
-            color: 'green',
+            color: '#85e894',
             cards: [],
-        },
-    ];
-
-    urlevels = [
-        {
-            level: LevelTypes.low,
-            title: 'נמוכה',
-            color: 'green',
-        },
-        {
-            level: LevelTypes.medium,
-            title: 'בינונית',
-            color: 'yellow',
-        },
-        {
-            level: LevelTypes.high,
-            title: 'גבוהה',
-            color: 'red',
         },
     ];
 
@@ -66,6 +51,16 @@ export class TasksComponent implements OnInit {
 
             sub.unsubscribe();
         });
+    }
+    
+    isDuplicate() {
+        const cards = [
+            ...this.sections[TaskStatuses.open].cards,
+            ...this.sections[TaskStatuses.inProgress].cards,
+        ];
+        const item = cards.find(x => x.task == this.newTask);
+
+        return Boolean(item);
     }
 
     levelChange(item: Task) {
@@ -108,6 +103,11 @@ export class TasksComponent implements OnInit {
     }
 
     addTask() {
+        if (this.isDuplicate()) {
+            alert("יש כבר משימה כזאת");
+            return;
+        }
+
         const sub = this.http.post<Task>("tasks", { task: this.newTask }).subscribe(data => {
             this.sections.find(x => x.status == TaskStatuses.open)?.cards.push(data);
             this.newTask = '';
@@ -124,7 +124,11 @@ export class TasksComponent implements OnInit {
         });
     }
 
-    constructor(private http: HttpService) { }
+    navigateTask(item: Task) {
+        this.router.navigate(['task', item.id]);
+    }
+
+    constructor(private http: HttpService, private router: Router) { }
 
     ngOnInit() {
         const sub = this.http.get<Task[]>("tasks").subscribe(data => {

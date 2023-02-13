@@ -3,10 +3,17 @@ import cors from 'cors';
 import './sqlConnect';
 import { signup } from './services/signup';
 import { getLoginStatus, login, logout } from './services/login';
-import { addTask, changeTaskLevel, changeTaskStatus, getTasks, removeTask } from './services/tasks';
+import { addTask, changeTaskLevel, changeTaskStatus, getCounterTasks, getTask, getTasks, removeTask, restoreTask, updateTask } from './services/tasks';
+import { addProduct, getCartProducts, getProduct, getProducts, removeProduct, restoreProduct, updateProduct } from './services/products';
 const session = require('express-session');
 
 const app = express();
+
+// const unGuards = [
+//     '/login',
+//     '/logout',
+//     '/signup',
+// ];
 
 app.use(session({
     secret: 'my-secret',
@@ -24,6 +31,15 @@ app.use(cors({
 
 app.use(express.json());
 
+// // פונקצית ביניים הבודקת את ההרשאות באופן גורף - לפני שהיא ניגשת בכלל לפונקציות
+// app.use((req, res, next) => {
+//     if (unGuards.includes(req.url) || req.session.user) {
+//         next();
+//     } else {
+//         res.sendStatus(401);
+//     }
+// });
+
 app.listen(3000, () => {
     console.log('listening on 3000');
 });
@@ -39,13 +55,33 @@ app.get('/users/:userId', (req, res) => {
     });
 });
 
+function authGurd(req, res, next) {
+    if (req.session.user) {
+        next();
+    } else {
+        res.sendStatus(401);
+    }
+}
+
 app.get('/login', getLoginStatus);
 app.get('/logout', logout);
 app.post('/signup', signup);
 app.post('/login', login);
 
-app.get('/tasks', getTasks);
-app.post('/tasks', addTask);
-app.put('/tasks/:taskId/status/:newStatus', changeTaskStatus);
-app.put('/tasks/:taskId/level/:newLevel', changeTaskLevel);
-app.delete('/tasks/:id', removeTask);
+app.get('/tasks', authGurd, getTasks);
+app.get('/tasks/counter', authGurd, getCounterTasks);
+app.get('/task/:id', authGurd, getTask);
+app.post('/tasks', authGurd, addTask);
+app.put('/tasks/:id', authGurd, updateTask);
+app.put('/tasks/:taskId/status/:newStatus', authGurd, changeTaskStatus);
+app.put('/tasks/:taskId/level/:newLevel', authGurd, changeTaskLevel);
+app.put('/tasks/restore/:id', authGurd, restoreTask);
+app.delete('/tasks/:id', authGurd, removeTask);
+
+app.get('/products', authGurd, getProducts);
+app.post('/products/cart', authGurd, getCartProducts);
+app.get('/product/:id', authGurd, getProduct);
+app.post('/products', authGurd, addProduct);
+app.put('/products/:id', authGurd, updateProduct);
+app.put('/products/restore/:id', authGurd, restoreProduct);
+app.delete('/products/:id', authGurd, removeProduct);

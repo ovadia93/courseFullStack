@@ -7,7 +7,7 @@ export function getTasks(req, res) {
         isDeleted = 1;
     }
 
-    con.query("SELECT * FROM `tasks` WHERE `isDeleted` = ?", [isDeleted], (err, result) => {
+    con.query("SELECT * FROM `tasks` WHERE `isDeleted` = ? AND `userId` = ?", [isDeleted, req.session.user.id], (err, result) => {
         if (err) {
             console.log(err);
         }
@@ -16,8 +16,32 @@ export function getTasks(req, res) {
     });
 }
 
+export function getCounterTasks(req, res) {
+    con.query("SELECT `status`, COUNT(`id`) AS 'count' FROM `tasks` WHERE `userId` = ? AND `isDeleted` = 0 GROUP BY `status`", [req.session.user.id], (err, result) => {
+        if (err) {
+            console.log(err);
+        }
+
+        res.send(result);
+    });
+}
+
+export function getTask(req, res) {
+    con.query("SELECT * FROM `tasks` WHERE `id` = ? AND `userId` = ?", [req.params.id, req.session.user.id], (err, result) => {
+        if (err) {
+            console.log(err);
+        }
+
+        if (result.length) {
+            res.send(result[0]);
+        } else {
+            res.send();
+        }
+    });
+}
+
 export function addTask(req, res) {
-    con.query("INSERT INTO `tasks`(`task`, `status`) VALUES (?, 0)", [req.body.task], (err, result) => {
+    con.query("INSERT INTO `tasks`(`task`, `status`, `userId`) VALUES (?, 0, ?)", [req.body.task, req.session.user.id], (err, result) => {
         if (err) {
             console.log(err);
         }
@@ -32,8 +56,18 @@ export function addTask(req, res) {
     });
 }
 
+export function updateTask(req, res) {
+    con.query("UPDATE `tasks` SET `task` = ?, `status` = ?, `level` = ?, `remark` = ? WHERE `id` = ? AND `userId` = ?", [req.body.task, req.body.status, req.body.level, req.body.remark, req.params.id, req.session.user.id], (err, result) => {
+        if (err) {
+            console.log(err);
+        }
+
+        res.send();
+    });
+}
+
 export function changeTaskStatus(req, res) {
-    con.query("UPDATE `tasks` SET `status` = ? WHERE `id` = ?", [req.params.newStatus, req.params.taskId], (err, result) => {
+    con.query("UPDATE `tasks` SET `status` = ? WHERE `id` = ? AND `userId` = ?", [req.params.newStatus, req.params.taskId, req.session.user.id], (err, result) => {
         if (err) {
             console.log(err);
         }
@@ -43,7 +77,17 @@ export function changeTaskStatus(req, res) {
 }
 
 export function changeTaskLevel(req, res) {
-    con.query("UPDATE `tasks` SET `level` = ? WHERE `id` = ?", [req.params.newLevel, req.params.taskId], (err, result) => {
+    con.query("UPDATE `tasks` SET `level` = ? WHERE `id` = ? AND `userId` = ?", [req.params.newLevel, req.params.taskId, req.session.user.id], (err, result) => {
+        if (err) {
+            console.log(err);
+        }
+
+        res.send();
+    });
+}
+
+export function restoreTask(req, res) {
+    con.query("UPDATE `tasks` SET `isDeleted` = 0 WHERE `id` = ? AND `userId` = ?", [req.params.id, req.session.user.id], (err, result) => {
         if (err) {
             console.log(err);
         }
@@ -53,7 +97,7 @@ export function changeTaskLevel(req, res) {
 }
 
 export function removeTask(req, res) {
-    con.query("UPDATE `tasks` SET `isDeleted` = 1 WHERE `id` = ?", [req.params.id], (err, result) => {
+    con.query("UPDATE `tasks` SET `isDeleted` = 1 WHERE `id` = ? AND `userId` = ?", [req.params.id, req.session.user.id], (err, result) => {
         if (err) {
             console.log(err);
         }
@@ -61,4 +105,3 @@ export function removeTask(req, res) {
         res.send();
     });
 }
-

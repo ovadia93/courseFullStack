@@ -6,6 +6,7 @@ import { User } from './signup/user.interface';
 })
 export class UtilityService {
     private user?: User;
+    cartAmount: number = 0;
 
     setUser(user?: User) {
         this.user = user;
@@ -15,5 +16,23 @@ export class UtilityService {
         return this.user;
     }
 
-    constructor() { }
+    addToCart(productId?: number) {
+        let cart = [];
+
+        if (localStorage.getItem('cart')) {
+            cart = JSON.parse(localStorage.getItem('cart') as any);
+        }
+
+        if (productId) {
+            cart.push(productId);
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        this.cartAmount = cart.length;
+    }
+
+    constructor() {
+        this.addToCart();
+    }
 }

@@ -4,6 +4,7 @@ export interface Task {
     task: string;
     status: TaskStatuses;
     level: LevelTypes;
+    remark: string;
     isDeleted: boolean;
 }
 
@@ -26,3 +27,21 @@ export enum LevelTypes {
     medium = 1,
     high = 2,
 }
+
+export const urlevels = [
+    {
+        level: LevelTypes.low,
+        title: 'נמוכה',
+        color: '#cddc39',
+    },
+    {
+        level: LevelTypes.medium,
+        title: 'בינונית',
+        color: '#ff9800',
+    },
+    {
+        level: LevelTypes.high,
+        title: 'גבוהה',
+        color: '#a02424',
+    },
+];

@@ -13,7 +13,14 @@ import { HttpService } from './http.service';
 import { UtilityService } from './utility.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
-import { TasksRecycleBinComponent } from './tasks-recycle-bin/tasks-recycle-bin.component';
+import { TasksRecycleBinComponent } from './tasks/tasks-recycle-bin/tasks-recycle-bin.component';
+import { TaskEditComponent } from './tasks/task-edit/task-edit.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { MarketComponent } from './market/market.component';
+import { ProductsManagmentComponent } from './market/products-managment/products-managment.component';
+import { ProductComponent } from './market/products-managment/product/product.component';
+import { ProductsComponent } from './market/products/products.component';
+import { CartComponent } from './market/cart/cart.component';
 
 @NgModule({
     declarations: [
@@ -23,7 +30,14 @@ import { TasksRecycleBinComponent } from './tasks-recycle-bin/tasks-recycle-bin.
         SignupComponent,
         NavbarComponent,
         HomeComponent,
-        TasksRecycleBinComponent
+        TasksRecycleBinComponent,
+        TaskEditComponent,
+        ErrorPageComponent,
+        MarketComponent,
+        ProductsManagmentComponent,
+        ProductComponent,
+        ProductsComponent,
+        CartComponent
     ],
     imports: [
         BrowserModule,
