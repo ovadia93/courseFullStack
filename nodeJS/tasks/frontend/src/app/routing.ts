@@ -1,4 +1,5 @@
 import { Routes } from "@angular/router";
+import { CustomersComponent } from "./customers/customers.component";
 import { ErrorPageComponent } from "./error-page/error-page.component";
 import { HomeComponent } from "./home/home.component";
 import { LoginComponent } from "./login/login.component";
@@ -14,6 +15,7 @@ import { TasksComponent } from "./tasks/tasks.component";
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
+    { path: 'customers', component: CustomersComponent },
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'tasks', component: TasksComponent },

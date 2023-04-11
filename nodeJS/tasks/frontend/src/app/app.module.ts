@@ -21,6 +21,11 @@ import { ProductsManagmentComponent } from './market/products-managment/products
 import { ProductComponent } from './market/products-managment/product/product.component';
 import { ProductsComponent } from './market/products/products.component';
 import { CartComponent } from './market/cart/cart.component';
+import { AgePipe } from './age.pipe';
+import { DatePipe } from '@angular/common';
+import { SocialLoginModule, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
+import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
+import { CustomersComponent } from './customers/customers.component';
 
 @NgModule({
     declarations: [
@@ -37,7 +42,9 @@ import { CartComponent } from './market/cart/cart.component';
         ProductsManagmentComponent,
         ProductComponent,
         ProductsComponent,
-        CartComponent
+        CartComponent,
+        AgePipe,
+        CustomersComponent
     ],
     imports: [
         BrowserModule,
@@ -45,10 +52,29 @@ import { CartComponent } from './market/cart/cart.component';
         ReactiveFormsModule,
         HttpClientModule,
         RouterModule.forRoot(routes),
+        SocialLoginModule,
     ],
     providers: [
         HttpService,
         UtilityService,
+        DatePipe,
+        {
+            provide: 'SocialAuthServiceConfig',
+            useValue: {
+                autoLogin: false,
+                providers: [
+                    {
+                        id: GoogleLoginProvider.PROVIDER_ID,
+                        provider: new GoogleLoginProvider(
+                            '947566006072-tjim5c02r01t67jl6k56grjb0vk9aj42.apps.googleusercontent.com'
+                        )
+                    },
+                ],
+                onError: (err) => {
+                    console.error(err);
+                }
+            } as SocialAuthServiceConfig,
+        }
     ],
     bootstrap: [AppComponent]
 })
