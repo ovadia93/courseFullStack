@@ -27,8 +27,8 @@ function remove(elem) {
 
 $(function() {
     $('img').click(function() {
-        // $(this).fadeOut(1000);
+        $(this).fadeOut(1000);
         $(this).toggleClass('kuku');
-        // document.querySelector("audio").play();
+        document.querySelector("audio").play();
     });
 });
