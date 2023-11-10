@@ -1,5 +1,5 @@
 function nameAlert() {
-    alert(`hello ${document.getElementById('userName').value}`);
+    alert(`הלו ${document.getElementById('userName').value}`);
 }
 
 function calc() {
